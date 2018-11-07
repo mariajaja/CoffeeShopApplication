@@ -1,19 +1,48 @@
 body {
-	background-color: #F28123;
+	background-color: #EFDCAE;
 }
 
 h1 {
 	color: #410B13;
 }
 
-button {
-	background-color: #A63C06;
-	border-color: #710000;
+.clickThru {
+	background-color: #410B13;
+	border-color: #945d5e;
 	color:white;
 }
 
-form {
-	background: -webkit-linear-gradient(bottom, #F28123, #F28123 175px);
-    background: -moz-linear-gradient(bottom, #F28123, #F28123 175px);
-    background: linear-gradient(bottom, #F28123, #F28123 175px);
+.navbar-custom {
+    font-weight:500;
+    color:#945d5e;
+    background-color:#410B13;
+    border-color: #410B13;
+    padding: 30px; 
+    margin-bottom:30px;
+}
+
+    /* TODO isn't working*/
+.navbar-custom:hover {
+	color: peachpuff;
+}
+
+.topDiv {
+	margin-top:150px;
+}
+
+.navbar-fixed-top > li > a {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    *zoom:1; /* hasLayout ie7 trigger */
+    vertical-align: top;
+    margin: 0px auto;
+ }
+
+ .container-fluid {
+    text-align:center;
+}
+
+#addUserForm {
+	text-align:center;
 }
