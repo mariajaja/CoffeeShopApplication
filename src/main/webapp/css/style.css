@@ -1,0 +1,19 @@
+body {
+	background-color: #F28123;
+}
+
+h1 {
+	color: #410B13;
+}
+
+button {
+	background-color: #A63C06;
+	border-color: #710000;
+	color:white;
+}
+
+form {
+	background: -webkit-linear-gradient(bottom, #F28123, #F28123 175px);
+    background: -moz-linear-gradient(bottom, #F28123, #F28123 175px);
+    background: linear-gradient(bottom, #F28123, #F28123 175px);
+}
