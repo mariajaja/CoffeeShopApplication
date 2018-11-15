@@ -46,15 +46,14 @@
             </c:forEach>
           </select>
         
-          <button type="submit" class="btn btn-primary mb-2 mr-2">Search</button>
+          <button type="submit">Search</button>
           <c:if test="${not empty param.keyword or not empty param.category}">
-            <%-- c:if determines whether its contents should show or not --%>
-            <a href="/admin/menu" class="btn btn-secondary mb-2">Clear</a>
+            <a href="/admin/menu">Clear</a>
           </c:if>
         </form>
         
-        <table class="table">
-            <thead>
+        <table class="table table-striped">
+            <thead class="thead-dark" style="background-color:#4B4237">
             <tr>
                 <th>Item</th>
                 <th>Category</th>
@@ -71,15 +70,15 @@
                     <td>${ menuItem.category }</td>
                     <td>${ menuItem.description }</td>
                     <td>
-                        <a href="/admin/menu/modify?id=${ menuItem.id }" class="btn btn-light btn-sm">Edit</a>
-                        <a href="/admin/menu/delete?id=${ menuItem.id }" class="btn btn-light btn-sm">Delete</a>
+                        <a href="/admin/menu/modify?id=${ menuItem.id }" >Edit</a>
+                        <a href="/admin/menu/delete?id=${ menuItem.id }" >Delete</a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
         
-        <a class="btn btn-secondary" href="/admin/menu/create">Add</a>
+        <a href="/admin/menu/create">Add</a>
     </div>
 </body>
 </html>

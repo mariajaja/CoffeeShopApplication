@@ -37,7 +37,7 @@
             <input type="hidden" name="id" value="${ item.id }" />
             <div class="form-group">
                 <label for="name">Item</label>
-                <input class="form-control" id="name" name="name" required minlength="2" autocomplete="off">
+                <input class="form-control" id="name" name="name" required min="2" autocomplete="off">
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
@@ -45,11 +45,11 @@
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <input class="form-control" id="description" name="description" required minlength="3">
+                <input class="form-control" id="description" name="description" required min="3">
             </div>
             <div class="form-group">
                 <label for="description">Price</label>
-                <input class="form-control" id="price" name="price" required minlength="3">
+                <input class="form-control" id="price" name="price" required min="3">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <a href="/admin/menu" class="btn btn-link">Cancel</a>
