@@ -34,6 +34,13 @@
 	</nav>  
     <div class="container" style="padding-top:30px;">
         <h1 style="padding-bottom:30px;">Welcome to GC Coffee!</h1>
+        
+        <p>
+            <button>See a list of our drinks?</button>
+            <button>See a list of our food?</button>
+        </p>
+        
+        
         <a href="/Register"><button class="clickThru">Create an account?</button></a>
     </div>
 

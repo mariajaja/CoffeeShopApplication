@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import co.grandcircus.coffeeshoplab.dao.MenuDao;
+import co.grandcircus.coffeeshoplab.dao.UserDao;
+import co.grandcircus.coffeeshoplab.entity.User;
+
 /**
  * @author Mariah
  *
@@ -20,10 +24,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class CoffeeShopController {
 
 	@Autowired
-	User user;
+	UserDao userDao;
 
 	@Autowired
-	MenuList list;
+	MenuDao menuDao;
 
 	@RequestMapping("/")
 	public ModelAndView home() {
@@ -42,8 +46,10 @@ public class CoffeeShopController {
 			@RequestParam boolean newsletter) {
 		ModelAndView mav = new ModelAndView("AddUser");
 		LocalDateTime timeAccountCreated = LocalDateTime.now();
-		user = new User(firstName, lastName, userEmail, userPhone, username, userPassword, timeAccountCreated,
+		Long id = null;
+		User user = new User(id, firstName, lastName, userEmail, userPhone, username, userPassword, timeAccountCreated,
 				birthdayInput, birthdayTreat, newsletter);
+		userDao.create(user);
 		mav.addObject(user);
 		return mav;
 	}
@@ -51,7 +57,7 @@ public class CoffeeShopController {
 	@RequestMapping("/menu")
 	public ModelAndView showMenu() {
 		ModelAndView mav = new ModelAndView("list-menu");
-		mav.addObject("list", list.getList());
+		mav.addObject("list", menuDao.findAll());
 		return mav;
 	}
 }

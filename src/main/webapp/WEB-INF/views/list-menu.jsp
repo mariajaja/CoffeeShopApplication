@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta charset="ISO-8859-1">
@@ -30,7 +31,7 @@
         </ul>
       </div>
     </nav>
-    <div class="container" style="padding-top:30px;">
+    <div class="container">
 	    <table class="table table-striped">
 	        <thead class="thead-dark" style="background-color:#4B4237">
 		        <tr>
@@ -44,7 +45,7 @@
 			        <tr>
 			            <td>${ menuItem.name }</td>
 			            <td>${ menuItem.description }</td>
-			            <td>$${ menuItem.price }</td>
+			            <td><fmt:formatNumber value ="${ menuItem.price}" type = "currency"/></td>
 			        </tr>    
 			    </c:forEach>
 		    </tbody>

@@ -47,7 +47,7 @@
 		           Email*:<br><input type="email" name="userEmail" required>
 		       </p>
 		       <p>
-		           Phone Number:<br><input type="tel" name="userPhone">
+		           Phone Number:<br><input type="tel" name="userPhone" id="phone" pattern="[\d]{10}" title="Please enter your area code. Do not add any characters other than numbers.">
 		       </p>
 		       <p>
 	               Birthday:<br><input type="date" name="birthdayInput">           
@@ -81,6 +81,7 @@
 	    </form>
     </div>
     <script>   
+        var phone = document.getElementById('phone').value
         function check(input) {
             if (input.value != document.getElementById('password').value) {
                 input.setCustomValidity('Password Must be Matching.');
@@ -88,7 +89,7 @@
                 // input is valid -- reset the error message
                 input.setCustomValidity('');
             }
-        }        
+        }  
     </script>
 </body>
 </html>

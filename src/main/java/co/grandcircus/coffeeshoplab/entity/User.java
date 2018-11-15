@@ -1,27 +1,41 @@
 /**
  * 
  */
-package co.grandcircus.coffeeshoplab;
+package co.grandcircus.coffeeshoplab.entity;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author Mariah
  *
  */
-@Component
+@Entity
+@Table(name = "user")
 public class User {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String firstName;
 	private String lastName;
+	@Column(name = "email")
 	private String userEmail;
+	@Column(name = "phone")
 	private String userPhone;
 	private String username;
+	@Column(name = "password")
 	private String userPassword;
+	@Column(name = "time_created")
 	private LocalDateTime timeAccountCreated;
+	@Column(name = "birthday")
 	private Date userBirthday;
 	private boolean birthdayTreat;
 	private boolean newsletter;
@@ -30,10 +44,10 @@ public class User {
 
 	}
 
-	public User(String firstName, String lastName, String userEmail, String userPhone, String username,
+	public User(Long id, String firstName, String lastName, String userEmail, String userPhone, String username,
 			String userPassword, LocalDateTime timeAccountCreated, Date userBirthday, boolean birthdayTreat,
 			boolean newsletter) {
-		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userEmail = userEmail;
@@ -44,6 +58,14 @@ public class User {
 		this.userBirthday = userBirthday;
 		this.birthdayTreat = birthdayTreat;
 		this.newsletter = newsletter;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -128,10 +150,10 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + ", userEmail=" + userEmail + ", userPhone="
-				+ userPhone + ", username=" + username + ", userPassword=" + userPassword + ", timeAccountCreated="
-				+ timeAccountCreated + ", userBirthday=" + userBirthday + ", birthdayTreat=" + birthdayTreat
-				+ ", newsletter=" + newsletter + "]";
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userEmail=" + userEmail
+				+ ", userPhone=" + userPhone + ", username=" + username + ", userPassword=" + userPassword
+				+ ", timeAccountCreated=" + timeAccountCreated + ", userBirthday=" + userBirthday + ", birthdayTreat="
+				+ birthdayTreat + ", newsletter=" + newsletter + "]";
 	}
 
 }
