@@ -6,6 +6,7 @@ package co.grandcircus.coffeeshoplab.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
@@ -29,6 +30,16 @@ public class UserDao {
 		// When creating a a query specify the type of the results: Food.class
 		// HQL queries use Java class and property names, not SQL table & column names.
 		return em.createQuery("FROM User", User.class).getResultList();
+	}
+
+	public User findByUsername(String username) {
+		try {
+			return em.createQuery("FROM User WHERE username = :username", User.class).setParameter("username", username)
+					.getSingleResult();
+		} catch (NoResultException ex) {
+			// No user with that username found.
+			return null;
+		}
 	}
 
 	// could modify in future to show a specific user's information (i.e. once

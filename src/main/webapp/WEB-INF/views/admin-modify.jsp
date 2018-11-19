@@ -10,26 +10,7 @@
 	<link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-*" style="background-color: #410B13; padding:30px; font-size:1em;">
-      <a class="navbar-brand" href="/" style="font-size:2em;">GC Coffee</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/menu">Menu</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Register">Register</a>
-          </li>
-          <li class="nav-item">
-           <%-- TO BE ADDED --%>
-            <a class="nav-link disabled" href="#">Log-In</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <%@include file="partials/header.jsp" %> 
     <div class="container">
         <h1>${ title }</h1>
         

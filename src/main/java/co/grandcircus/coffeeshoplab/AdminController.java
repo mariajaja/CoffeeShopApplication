@@ -3,6 +3,8 @@
  */
 package co.grandcircus.coffeeshoplab;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +28,7 @@ public class AdminController {
 
 	@RequestMapping("/admin/menu")
 	public ModelAndView listMenu(@RequestParam(value = "keyword", required = false) String keyword,
-			@RequestParam(value = "category", required = false) String category) {
+			@RequestParam(value = "category", required = false) String category, HttpSession session) {
 		ModelAndView mav = new ModelAndView("admin-menu");
 		if (keyword != null && !keyword.isEmpty()) {
 			mav.addObject("items", menuDao.findByKeyword(keyword));
@@ -41,7 +43,7 @@ public class AdminController {
 	}
 
 	@RequestMapping("/admin/menu/create")
-	public ModelAndView showCreateForm() {
+	public ModelAndView showCreateForm(HttpSession session) {
 		// If there is only one model value to add, use this one-line shortcut.
 		// Equivalent to
 		// ModelAndView mav = new ModelAndView("food-form");
@@ -50,14 +52,14 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/admin/menu/create", method = RequestMethod.POST)
-	public ModelAndView submitCreateForm(MenuItem menuItem) {
+	public ModelAndView submitCreateForm(MenuItem menuItem, HttpSession session) {
 		menuDao.create(menuItem);
 		return new ModelAndView("redirect:/admin/menu");
 	}
 
 	// path variable required to identify which food we're editing
 	@RequestMapping("/admin/menu/modify")
-	public ModelAndView showEditForm(@RequestParam("id") Long id) {
+	public ModelAndView showEditForm(@RequestParam("id") Long id, HttpSession session) {
 		ModelAndView mav = new ModelAndView("admin-modify");
 		mav.addObject("item", menuDao.findById(id));
 		mav.addObject("title", "Edit Item");
@@ -66,13 +68,13 @@ public class AdminController {
 
 	// same URL but different method
 	@RequestMapping(value = "/admin/menu/modify", method = RequestMethod.POST)
-	public ModelAndView submitEditForm(MenuItem menuItem) {
+	public ModelAndView submitEditForm(MenuItem menuItem, HttpSession session) {
 		menuDao.update(menuItem);
 		return new ModelAndView("redirect:/admin/menu");
 	}
 
 	@RequestMapping("/admin/menu/delete")
-	public ModelAndView delete(@RequestParam("id") Long id) {
+	public ModelAndView delete(@RequestParam("id") Long id, HttpSession session) {
 		menuDao.delete(id);
 		return new ModelAndView("redirect:/admin/menu");
 	}
