@@ -17,8 +17,15 @@
         <h1 style="padding-bottom:30px;">Welcome to GC Coffee!</h1>
         
         <h2>${ message }</h2>
-            
-        <a href="/Register"><button class="clickThru">Create an account?</button></a>
+        <c:choose>
+            <c:when test="${ not empty user }">    
+                <h3>Welcome back!</h3>
+                <h4>Would you like to <a href="/cart/your-items">view your cart</a>?</h4>
+            </c:when>
+            <c:otherwise>
+                <a href="/Register"><button class="clickThru">Create an account?</button></a>
+            </c:otherwise>
+        </c:choose>
     </div>
 
 </body>
