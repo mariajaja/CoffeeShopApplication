@@ -15,20 +15,25 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/menu">Menu</a>
-          </li>
           <c:choose>
             <c:when test="${ not empty user }">
-                <li class="nav-item"> Welcome ${ user.username } </li>
+                <li class="nav-item"> 
+                    <a class="nav-link" href="">Welcome ${ user.username }</a>
+                </li>
                 <li class="nav-item">
-                    <a href="/cart/your-items">Your cart</a>
+		            <a class="nav-link" href="/menu">Menu</a>
+		        </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart/your-items">Your cart</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>
                 </li>
             </c:when>
             <c:otherwise>
+                <li class="nav-item">
+                    <a class="nav-link" href="/menu">Menu</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
                 </li>

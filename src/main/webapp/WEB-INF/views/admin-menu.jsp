@@ -7,7 +7,7 @@
 <head>
     <meta charset="ISO-8859-1">
 	<title>${ title }</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/sketchy/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="/style.css" />
 </head>
 <body>
@@ -51,15 +51,15 @@
                     <td>${ menuItem.category }</td>
                     <td>${ menuItem.description }</td>
                     <td>
-                        <a href="/admin/menu/modify?id=${ menuItem.id }" >Edit</a>
-                        <a href="/admin/menu/delete?id=${ menuItem.id }" >Delete</a>
+                        <a href="/admin/menu/modify?id=${ menuItem.id }" class="btn btn-outline-dark btn-sm">Edit</a>
+                        <a href="/admin/menu/delete?id=${ menuItem.id }" class="btn btn-outline-dark btn-sm">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
         
-        <a href="/admin/menu/create">Add</a>
+        <a href="/admin/menu/create" class="btn btn-info btn-lg btn-block">Add</a>
     </div>
 </body>
 </html>

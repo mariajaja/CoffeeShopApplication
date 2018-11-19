@@ -6,7 +6,7 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>${ title }</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/sketchy/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="/style.css" />
 </head>
 <body>
@@ -32,8 +32,8 @@
                 <label for="description">Price</label>
                 <input class="form-control" id="price" name="price" required min="3">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="/admin/menu" class="btn btn-link">Cancel</a>
+            <button type="submit" class="btn btn-dark">Submit</button>
+            <a href="/admin/menu" class="btn btn-outline-dark">Cancel</a>
         </form>
     </div>
     

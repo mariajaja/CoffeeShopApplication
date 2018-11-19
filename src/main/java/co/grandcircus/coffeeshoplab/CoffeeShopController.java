@@ -115,10 +115,15 @@ public class CoffeeShopController {
 	}
 
 	@RequestMapping("/cart/your-items")
-	public ModelAndView viewUserCart(@SessionAttribute("user") User user, HttpSession session,
+	public ModelAndView viewUserCart(@SessionAttribute(name = "user", required = false) User user, HttpSession session,
 			RedirectAttributes redir) {
 		ModelAndView mav = new ModelAndView("user-cart");
 		List<CartItem> userCart = cartItemDao.findAllItemsInCart(user);
+		Double total = 0.0;
+		for (CartItem item : userCart) {
+			total += item.getMenuItem().getPrice();
+		}
+		mav.addObject("total", total);
 		mav.addObject("cart", userCart);
 		return mav;
 	}
@@ -141,6 +146,19 @@ public class CoffeeShopController {
 		}
 
 		redir.addFlashAttribute("message", "Item has been added to your cart!");
+		return new ModelAndView("redirect:/cart/your-items");
+	}
+
+	@RequestMapping("/cart/remove")
+	public ModelAndView deleteFromCart(@RequestParam(name = "id", required = false) Long id,
+			@SessionAttribute(name = "user", required = false) User user, HttpSession session,
+			RedirectAttributes redir) {
+		MenuItem menuItem = menuDao.findById(id);
+		CartItem item = cartItemDao.findItemInCart(user, menuItem);
+		// just delete all of the item, no matter the quantity
+		// TODO possibly create way to delete by user selected quantity if there's time
+		cartItemDao.delete(item.getId());
+		redir.addFlashAttribute("message", "Item has been removed from your cart!");
 		return new ModelAndView("redirect:/cart/your-items");
 	}
 

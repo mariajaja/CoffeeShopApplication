@@ -20,6 +20,11 @@
 		            <th>Item</th>
 		            <th>Description</th>
 		            <th>Price</th>
+		            <c:choose>
+			            <c:when test="${ not empty user }">
+			                <th>Add to Cart</th>
+			            </c:when>
+		            </c:choose>
 		        </tr>
 	        </thead>
 	        <tbody>
@@ -28,9 +33,13 @@
 			            <td>${ menuItem.name }</td>
 			            <td>${ menuItem.description }</td>
 			            <td><fmt:formatNumber value ="${ menuItem.price}" type = "currency"/></td>
-			            <td>
-	                       <a href="/cart/${ menuItem.id }/add" >Add Item</a>
-                        </td>
+			            <c:choose>
+                            <c:when test="${ not empty user }">
+                                <td>
+                                    <a href="/cart/${ menuItem.id }/add" class="btn btn-outline-dark btn-sm">Add Item</a>
+                                </td>
+                            </c:when>
+                        </c:choose>
 			        </tr>    
 			    </c:forEach>
 		    </tbody>
